@@ -61,7 +61,7 @@ export function AiCopilotPanel({ contextTitle, contextSummary, slaStatus, previo
           <div className="flex items-start gap-2 text-xs">
             <BookOpen className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
             <span>
-              Relevant knowledge article: <span className="font-medium">{article.title}</span>
+              Relevant knowledge article: <span className="font-medium">{article?.title ?? "—"}</span>
             </span>
           </div>
         </div>
