@@ -10,6 +10,7 @@ import { Pill, SlaBadge, TicketStatusBadge } from "@/components/common/StatusBad
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { consultantById, customers, slaRemainingLabel, tickets, type TicketStatus } from "@/data/demo";
 import { useSession } from "@/lib/session";
+import { currentUser } from "@/data/demo";
 
 const STATUSES: TicketStatus[] = ["NEW", "OPEN", "IN PROGRESS", "ESCALATED", "RESOLVED", "CLOSED"];
 
@@ -29,16 +30,16 @@ export const Route = createFileRoute("/tickets/")({
 });
 
 function TicketsPage() {
-  const { user, isManager } = useSession();
+  const { isManagement } = useSession();
   const [query, setQuery] = useState("");
   const [status, setStatus] = useState("all");
   const [sla, setSla] = useState("all");
-  const [scope, setScope] = useState(isManager ? "all" : "mine");
+  const [scope, setScope] = useState(isManagement ? "all" : "mine");
 
   const rows = useMemo(
     () =>
       tickets.filter((t) => {
-        if (scope === "mine" && t.consultantId !== user.id) return false;
+        if (scope === "mine" && t.consultantId !== currentUser.id) return false;
         if (status !== "all" && t.status !== status) return false;
         if (sla !== "all" && t.slaStatus !== sla) return false;
         const q = query.trim().toLowerCase();
@@ -51,7 +52,7 @@ function TicketsPage() {
           t.category.toLowerCase().includes(q)
         );
       }),
-    [query, status, sla, scope, user.id],
+    [query, status, sla, scope],
   );
 
   return (
@@ -108,7 +109,7 @@ function TicketsPage() {
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="mine">Assigned to me</SelectItem>
-              <SelectItem value="all">{isManager ? "All team tickets" : "All visible tickets"}</SelectItem>
+              <SelectItem value="all">{isManagement ? "All team tickets" : "All visible tickets"}</SelectItem>
             </SelectContent>
           </Select>
         </CardContent>
