@@ -97,10 +97,10 @@ function TicketsPage() {
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="all">All SLA states</SelectItem>
-              <SelectItem value="ON TRACK">On track</SelectItem>
+              <SelectItem value="NORMAL">Normal</SelectItem>
+              <SelectItem value="APPROACHING">Approaching</SelectItem>
               <SelectItem value="AT RISK">At risk</SelectItem>
               <SelectItem value="BREACHED">Breached</SelectItem>
-              <SelectItem value="MET">Met</SelectItem>
             </SelectContent>
           </Select>
           <Select value={scope} onValueChange={setScope}>
