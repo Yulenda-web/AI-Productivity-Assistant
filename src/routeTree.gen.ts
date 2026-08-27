@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AiWorkspaceRouteImport } from './routes/ai-workspace'
+import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as TasksRouteImport } from './routes/tasks'
 import { Route as CustomersIndexRouteImport } from './routes/customers.index'
 import { Route as CustomersCustomerIdRouteImport } from './routes/customers.$customerId'
@@ -25,6 +26,11 @@ const IndexRoute = IndexRouteImport.update({
 const AiWorkspaceRoute = AiWorkspaceRouteImport.update({
   id: '/ai-workspace',
   path: '/ai-workspace',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TasksRoute = TasksRouteImport.update({
@@ -56,6 +62,7 @@ const TicketsTicketIdRoute = TicketsTicketIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/ai-workspace': typeof AiWorkspaceRoute
+  '/notifications': typeof NotificationsRoute
   '/tasks': typeof TasksRoute
   '/customers/$customerId': typeof CustomersCustomerIdRoute
   '/tickets/$ticketId': typeof TicketsTicketIdRoute
@@ -65,6 +72,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/ai-workspace': typeof AiWorkspaceRoute
+  '/notifications': typeof NotificationsRoute
   '/tasks': typeof TasksRoute
   '/customers/$customerId': typeof CustomersCustomerIdRoute
   '/tickets/$ticketId': typeof TicketsTicketIdRoute
@@ -75,6 +83,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/ai-workspace': typeof AiWorkspaceRoute
+  '/notifications': typeof NotificationsRoute
   '/tasks': typeof TasksRoute
   '/customers/$customerId': typeof CustomersCustomerIdRoute
   '/tickets/$ticketId': typeof TicketsTicketIdRoute
@@ -86,6 +95,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/ai-workspace'
+    | '/notifications'
     | '/tasks'
     | '/customers/$customerId'
     | '/tickets/$ticketId'
@@ -95,6 +105,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/ai-workspace'
+    | '/notifications'
     | '/tasks'
     | '/customers/$customerId'
     | '/tickets/$ticketId'
@@ -104,6 +115,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/ai-workspace'
+    | '/notifications'
     | '/tasks'
     | '/customers/$customerId'
     | '/tickets/$ticketId'
@@ -114,6 +126,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AiWorkspaceRoute: typeof AiWorkspaceRoute
+  NotificationsRoute: typeof NotificationsRoute
   TasksRoute: typeof TasksRoute
   CustomersCustomerIdRoute: typeof CustomersCustomerIdRoute
   TicketsTicketIdRoute: typeof TicketsTicketIdRoute
@@ -135,6 +148,13 @@ declare module '@tanstack/react-router' {
       path: '/ai-workspace'
       fullPath: '/ai-workspace'
       preLoaderRoute: typeof AiWorkspaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tasks': {
@@ -178,6 +198,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AiWorkspaceRoute: AiWorkspaceRoute,
+  NotificationsRoute: NotificationsRoute,
   TasksRoute: TasksRoute,
   CustomersCustomerIdRoute: CustomersCustomerIdRoute,
   TicketsTicketIdRoute: TicketsTicketIdRoute,
