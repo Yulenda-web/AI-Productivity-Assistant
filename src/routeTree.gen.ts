@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdministrationRouteImport } from './routes/administration'
 import { Route as AiWorkspaceRouteImport } from './routes/ai-workspace'
 import { Route as CallCentreRouteImport } from './routes/call-centre'
+import { Route as LiveChatRouteImport } from './routes/live-chat'
 import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as TasksRouteImport } from './routes/tasks'
 import { Route as CustomersIndexRouteImport } from './routes/customers.index'
@@ -38,6 +39,11 @@ const AiWorkspaceRoute = AiWorkspaceRouteImport.update({
 const CallCentreRoute = CallCentreRouteImport.update({
   id: '/call-centre',
   path: '/call-centre',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LiveChatRoute = LiveChatRouteImport.update({
+  id: '/live-chat',
+  path: '/live-chat',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NotificationsRoute = NotificationsRouteImport.update({
@@ -76,6 +82,7 @@ export interface FileRoutesByFullPath {
   '/administration': typeof AdministrationRoute
   '/ai-workspace': typeof AiWorkspaceRoute
   '/call-centre': typeof CallCentreRoute
+  '/live-chat': typeof LiveChatRoute
   '/notifications': typeof NotificationsRoute
   '/tasks': typeof TasksRoute
   '/customers/$customerId': typeof CustomersCustomerIdRoute
@@ -88,6 +95,7 @@ export interface FileRoutesByTo {
   '/administration': typeof AdministrationRoute
   '/ai-workspace': typeof AiWorkspaceRoute
   '/call-centre': typeof CallCentreRoute
+  '/live-chat': typeof LiveChatRoute
   '/notifications': typeof NotificationsRoute
   '/tasks': typeof TasksRoute
   '/customers/$customerId': typeof CustomersCustomerIdRoute
@@ -101,6 +109,7 @@ export interface FileRoutesById {
   '/administration': typeof AdministrationRoute
   '/ai-workspace': typeof AiWorkspaceRoute
   '/call-centre': typeof CallCentreRoute
+  '/live-chat': typeof LiveChatRoute
   '/notifications': typeof NotificationsRoute
   '/tasks': typeof TasksRoute
   '/customers/$customerId': typeof CustomersCustomerIdRoute
@@ -115,6 +124,7 @@ export interface FileRouteTypes {
     | '/administration'
     | '/ai-workspace'
     | '/call-centre'
+    | '/live-chat'
     | '/notifications'
     | '/tasks'
     | '/customers/$customerId'
@@ -127,6 +137,7 @@ export interface FileRouteTypes {
     | '/administration'
     | '/ai-workspace'
     | '/call-centre'
+    | '/live-chat'
     | '/notifications'
     | '/tasks'
     | '/customers/$customerId'
@@ -139,6 +150,7 @@ export interface FileRouteTypes {
     | '/administration'
     | '/ai-workspace'
     | '/call-centre'
+    | '/live-chat'
     | '/notifications'
     | '/tasks'
     | '/customers/$customerId'
@@ -152,6 +164,7 @@ export interface RootRouteChildren {
   AdministrationRoute: typeof AdministrationRoute
   AiWorkspaceRoute: typeof AiWorkspaceRoute
   CallCentreRoute: typeof CallCentreRoute
+  LiveChatRoute: typeof LiveChatRoute
   NotificationsRoute: typeof NotificationsRoute
   TasksRoute: typeof TasksRoute
   CustomersCustomerIdRoute: typeof CustomersCustomerIdRoute
@@ -188,6 +201,13 @@ declare module '@tanstack/react-router' {
       path: '/call-centre'
       fullPath: '/call-centre'
       preLoaderRoute: typeof CallCentreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/live-chat': {
+      id: '/live-chat'
+      path: '/live-chat'
+      fullPath: '/live-chat'
+      preLoaderRoute: typeof LiveChatRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/notifications': {
@@ -240,6 +260,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdministrationRoute: AdministrationRoute,
   AiWorkspaceRoute: AiWorkspaceRoute,
   CallCentreRoute: CallCentreRoute,
+  LiveChatRoute: LiveChatRoute,
   NotificationsRoute: NotificationsRoute,
   TasksRoute: TasksRoute,
   CustomersCustomerIdRoute: CustomersCustomerIdRoute,
