@@ -142,7 +142,7 @@ function CallCentre() {
                     {c.startedAt} · {consultantById(c.consultantId)?.name} · {c.outcome}
                   </p>
                   <p className="mt-1 text-sm text-muted-foreground">{c.notes}</p>
-                  {c.followUp ? <p className="mt-1 text-xs text-amber-600">Follow-up: {c.followUp}</p> : null}
+                  {c.followUp ? <p className="mt-1 text-xs font-medium text-foreground">Follow-up: {c.followUp}</p> : null}
                 </div>
                 <div className="flex shrink-0 flex-col items-end gap-1.5">
                   <Pill tone={c.direction === "Missed" ? "red" : c.direction === "Incoming" ? "green" : "navy"}>
