@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdministrationRouteImport } from './routes/administration'
 import { Route as AiWorkspaceRouteImport } from './routes/ai-workspace'
+import { Route as CallCentreRouteImport } from './routes/call-centre'
 import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as TasksRouteImport } from './routes/tasks'
 import { Route as CustomersIndexRouteImport } from './routes/customers.index'
@@ -32,6 +33,11 @@ const AdministrationRoute = AdministrationRouteImport.update({
 const AiWorkspaceRoute = AiWorkspaceRouteImport.update({
   id: '/ai-workspace',
   path: '/ai-workspace',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CallCentreRoute = CallCentreRouteImport.update({
+  id: '/call-centre',
+  path: '/call-centre',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NotificationsRoute = NotificationsRouteImport.update({
@@ -69,6 +75,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/administration': typeof AdministrationRoute
   '/ai-workspace': typeof AiWorkspaceRoute
+  '/call-centre': typeof CallCentreRoute
   '/notifications': typeof NotificationsRoute
   '/tasks': typeof TasksRoute
   '/customers/$customerId': typeof CustomersCustomerIdRoute
@@ -80,6 +87,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/administration': typeof AdministrationRoute
   '/ai-workspace': typeof AiWorkspaceRoute
+  '/call-centre': typeof CallCentreRoute
   '/notifications': typeof NotificationsRoute
   '/tasks': typeof TasksRoute
   '/customers/$customerId': typeof CustomersCustomerIdRoute
@@ -92,6 +100,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/administration': typeof AdministrationRoute
   '/ai-workspace': typeof AiWorkspaceRoute
+  '/call-centre': typeof CallCentreRoute
   '/notifications': typeof NotificationsRoute
   '/tasks': typeof TasksRoute
   '/customers/$customerId': typeof CustomersCustomerIdRoute
@@ -105,6 +114,7 @@ export interface FileRouteTypes {
     | '/'
     | '/administration'
     | '/ai-workspace'
+    | '/call-centre'
     | '/notifications'
     | '/tasks'
     | '/customers/$customerId'
@@ -116,6 +126,7 @@ export interface FileRouteTypes {
     | '/'
     | '/administration'
     | '/ai-workspace'
+    | '/call-centre'
     | '/notifications'
     | '/tasks'
     | '/customers/$customerId'
@@ -127,6 +138,7 @@ export interface FileRouteTypes {
     | '/'
     | '/administration'
     | '/ai-workspace'
+    | '/call-centre'
     | '/notifications'
     | '/tasks'
     | '/customers/$customerId'
@@ -139,6 +151,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdministrationRoute: typeof AdministrationRoute
   AiWorkspaceRoute: typeof AiWorkspaceRoute
+  CallCentreRoute: typeof CallCentreRoute
   NotificationsRoute: typeof NotificationsRoute
   TasksRoute: typeof TasksRoute
   CustomersCustomerIdRoute: typeof CustomersCustomerIdRoute
@@ -168,6 +181,13 @@ declare module '@tanstack/react-router' {
       path: '/ai-workspace'
       fullPath: '/ai-workspace'
       preLoaderRoute: typeof AiWorkspaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/call-centre': {
+      id: '/call-centre'
+      path: '/call-centre'
+      fullPath: '/call-centre'
+      preLoaderRoute: typeof CallCentreRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/notifications': {
@@ -219,6 +239,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdministrationRoute: AdministrationRoute,
   AiWorkspaceRoute: AiWorkspaceRoute,
+  CallCentreRoute: CallCentreRoute,
   NotificationsRoute: NotificationsRoute,
   TasksRoute: TasksRoute,
   CustomersCustomerIdRoute: CustomersCustomerIdRoute,

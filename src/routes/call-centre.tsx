@@ -54,7 +54,7 @@ function CallCentre() {
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <MetricCard label="Calls today" value={String(calls.length)} icon={PhoneCall} />
         <MetricCard label="Incoming" value={String(incoming)} icon={Phone} />
-        <MetricCard label="Missed" value={String(missed)} icon={PhoneOff} tone="warning" />
+        <MetricCard label="Missed" value={String(missed)} icon={PhoneOff} tone="amber" />
         <MetricCard label="Average handling time" value={formatSeconds(avg)} icon={PhoneOutgoing} />
       </div>
 
@@ -142,7 +142,7 @@ function CallCentre() {
                     {c.startedAt} · {consultantById(c.consultantId)?.name} · {c.outcome}
                   </p>
                   <p className="mt-1 text-sm text-muted-foreground">{c.notes}</p>
-                  {c.followUp ? <p className="mt-1 text-xs text-warning">Follow-up: {c.followUp}</p> : null}
+                  {c.followUp ? <p className="mt-1 text-xs text-amber-600">Follow-up: {c.followUp}</p> : null}
                 </div>
                 <div className="flex shrink-0 flex-col items-end gap-1.5">
                   <Pill tone={c.direction === "Missed" ? "red" : c.direction === "Incoming" ? "green" : "navy"}>
