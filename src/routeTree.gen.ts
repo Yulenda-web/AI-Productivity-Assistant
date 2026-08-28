@@ -12,7 +12,12 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdministrationRouteImport } from './routes/administration'
 import { Route as AiWorkspaceRouteImport } from './routes/ai-workspace'
+import { Route as CalendarRouteImport } from './routes/calendar'
 import { Route as CallCentreRouteImport } from './routes/call-centre'
+import { Route as CasesRouteImport } from './routes/cases'
+import { Route as EmailRouteImport } from './routes/email'
+import { Route as EscalationsRouteImport } from './routes/escalations'
+import { Route as KnowledgeBaseRouteImport } from './routes/knowledge-base'
 import { Route as LiveChatRouteImport } from './routes/live-chat'
 import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as TasksRouteImport } from './routes/tasks'
@@ -36,9 +41,34 @@ const AiWorkspaceRoute = AiWorkspaceRouteImport.update({
   path: '/ai-workspace',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CalendarRoute = CalendarRouteImport.update({
+  id: '/calendar',
+  path: '/calendar',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CallCentreRoute = CallCentreRouteImport.update({
   id: '/call-centre',
   path: '/call-centre',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CasesRoute = CasesRouteImport.update({
+  id: '/cases',
+  path: '/cases',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmailRoute = EmailRouteImport.update({
+  id: '/email',
+  path: '/email',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EscalationsRoute = EscalationsRouteImport.update({
+  id: '/escalations',
+  path: '/escalations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KnowledgeBaseRoute = KnowledgeBaseRouteImport.update({
+  id: '/knowledge-base',
+  path: '/knowledge-base',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LiveChatRoute = LiveChatRouteImport.update({
@@ -81,7 +111,12 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/administration': typeof AdministrationRoute
   '/ai-workspace': typeof AiWorkspaceRoute
+  '/calendar': typeof CalendarRoute
   '/call-centre': typeof CallCentreRoute
+  '/cases': typeof CasesRoute
+  '/email': typeof EmailRoute
+  '/escalations': typeof EscalationsRoute
+  '/knowledge-base': typeof KnowledgeBaseRoute
   '/live-chat': typeof LiveChatRoute
   '/notifications': typeof NotificationsRoute
   '/tasks': typeof TasksRoute
@@ -94,7 +129,12 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/administration': typeof AdministrationRoute
   '/ai-workspace': typeof AiWorkspaceRoute
+  '/calendar': typeof CalendarRoute
   '/call-centre': typeof CallCentreRoute
+  '/cases': typeof CasesRoute
+  '/email': typeof EmailRoute
+  '/escalations': typeof EscalationsRoute
+  '/knowledge-base': typeof KnowledgeBaseRoute
   '/live-chat': typeof LiveChatRoute
   '/notifications': typeof NotificationsRoute
   '/tasks': typeof TasksRoute
@@ -108,7 +148,12 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/administration': typeof AdministrationRoute
   '/ai-workspace': typeof AiWorkspaceRoute
+  '/calendar': typeof CalendarRoute
   '/call-centre': typeof CallCentreRoute
+  '/cases': typeof CasesRoute
+  '/email': typeof EmailRoute
+  '/escalations': typeof EscalationsRoute
+  '/knowledge-base': typeof KnowledgeBaseRoute
   '/live-chat': typeof LiveChatRoute
   '/notifications': typeof NotificationsRoute
   '/tasks': typeof TasksRoute
@@ -123,7 +168,12 @@ export interface FileRouteTypes {
     | '/'
     | '/administration'
     | '/ai-workspace'
+    | '/calendar'
     | '/call-centre'
+    | '/cases'
+    | '/email'
+    | '/escalations'
+    | '/knowledge-base'
     | '/live-chat'
     | '/notifications'
     | '/tasks'
@@ -136,7 +186,12 @@ export interface FileRouteTypes {
     | '/'
     | '/administration'
     | '/ai-workspace'
+    | '/calendar'
     | '/call-centre'
+    | '/cases'
+    | '/email'
+    | '/escalations'
+    | '/knowledge-base'
     | '/live-chat'
     | '/notifications'
     | '/tasks'
@@ -149,7 +204,12 @@ export interface FileRouteTypes {
     | '/'
     | '/administration'
     | '/ai-workspace'
+    | '/calendar'
     | '/call-centre'
+    | '/cases'
+    | '/email'
+    | '/escalations'
+    | '/knowledge-base'
     | '/live-chat'
     | '/notifications'
     | '/tasks'
@@ -163,7 +223,12 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdministrationRoute: typeof AdministrationRoute
   AiWorkspaceRoute: typeof AiWorkspaceRoute
+  CalendarRoute: typeof CalendarRoute
   CallCentreRoute: typeof CallCentreRoute
+  CasesRoute: typeof CasesRoute
+  EmailRoute: typeof EmailRoute
+  EscalationsRoute: typeof EscalationsRoute
+  KnowledgeBaseRoute: typeof KnowledgeBaseRoute
   LiveChatRoute: typeof LiveChatRoute
   NotificationsRoute: typeof NotificationsRoute
   TasksRoute: typeof TasksRoute
@@ -196,11 +261,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AiWorkspaceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/calendar': {
+      id: '/calendar'
+      path: '/calendar'
+      fullPath: '/calendar'
+      preLoaderRoute: typeof CalendarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/call-centre': {
       id: '/call-centre'
       path: '/call-centre'
       fullPath: '/call-centre'
       preLoaderRoute: typeof CallCentreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cases': {
+      id: '/cases'
+      path: '/cases'
+      fullPath: '/cases'
+      preLoaderRoute: typeof CasesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/email': {
+      id: '/email'
+      path: '/email'
+      fullPath: '/email'
+      preLoaderRoute: typeof EmailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/escalations': {
+      id: '/escalations'
+      path: '/escalations'
+      fullPath: '/escalations'
+      preLoaderRoute: typeof EscalationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/knowledge-base': {
+      id: '/knowledge-base'
+      path: '/knowledge-base'
+      fullPath: '/knowledge-base'
+      preLoaderRoute: typeof KnowledgeBaseRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/live-chat': {
@@ -259,7 +359,12 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdministrationRoute: AdministrationRoute,
   AiWorkspaceRoute: AiWorkspaceRoute,
+  CalendarRoute: CalendarRoute,
   CallCentreRoute: CallCentreRoute,
+  CasesRoute: CasesRoute,
+  EmailRoute: EmailRoute,
+  EscalationsRoute: EscalationsRoute,
+  KnowledgeBaseRoute: KnowledgeBaseRoute,
   LiveChatRoute: LiveChatRoute,
   NotificationsRoute: NotificationsRoute,
   TasksRoute: TasksRoute,
