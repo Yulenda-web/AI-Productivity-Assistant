@@ -20,6 +20,7 @@ import { Route as EmailRouteImport } from './routes/email'
 import { Route as EscalationsRouteImport } from './routes/escalations'
 import { Route as KnowledgeBaseRouteImport } from './routes/knowledge-base'
 import { Route as LiveChatRouteImport } from './routes/live-chat'
+import { Route as ManagerRouteImport } from './routes/manager'
 import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as TasksRouteImport } from './routes/tasks'
 import { Route as CustomersIndexRouteImport } from './routes/customers.index'
@@ -82,6 +83,11 @@ const LiveChatRoute = LiveChatRouteImport.update({
   path: '/live-chat',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ManagerRoute = ManagerRouteImport.update({
+  id: '/manager',
+  path: '/manager',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NotificationsRoute = NotificationsRouteImport.update({
   id: '/notifications',
   path: '/notifications',
@@ -125,6 +131,7 @@ export interface FileRoutesByFullPath {
   '/escalations': typeof EscalationsRoute
   '/knowledge-base': typeof KnowledgeBaseRoute
   '/live-chat': typeof LiveChatRoute
+  '/manager': typeof ManagerRoute
   '/notifications': typeof NotificationsRoute
   '/tasks': typeof TasksRoute
   '/customers/$customerId': typeof CustomersCustomerIdRoute
@@ -144,6 +151,7 @@ export interface FileRoutesByTo {
   '/escalations': typeof EscalationsRoute
   '/knowledge-base': typeof KnowledgeBaseRoute
   '/live-chat': typeof LiveChatRoute
+  '/manager': typeof ManagerRoute
   '/notifications': typeof NotificationsRoute
   '/tasks': typeof TasksRoute
   '/customers/$customerId': typeof CustomersCustomerIdRoute
@@ -164,6 +172,7 @@ export interface FileRoutesById {
   '/escalations': typeof EscalationsRoute
   '/knowledge-base': typeof KnowledgeBaseRoute
   '/live-chat': typeof LiveChatRoute
+  '/manager': typeof ManagerRoute
   '/notifications': typeof NotificationsRoute
   '/tasks': typeof TasksRoute
   '/customers/$customerId': typeof CustomersCustomerIdRoute
@@ -185,6 +194,7 @@ export interface FileRouteTypes {
     | '/escalations'
     | '/knowledge-base'
     | '/live-chat'
+    | '/manager'
     | '/notifications'
     | '/tasks'
     | '/customers/$customerId'
@@ -204,6 +214,7 @@ export interface FileRouteTypes {
     | '/escalations'
     | '/knowledge-base'
     | '/live-chat'
+    | '/manager'
     | '/notifications'
     | '/tasks'
     | '/customers/$customerId'
@@ -223,6 +234,7 @@ export interface FileRouteTypes {
     | '/escalations'
     | '/knowledge-base'
     | '/live-chat'
+    | '/manager'
     | '/notifications'
     | '/tasks'
     | '/customers/$customerId'
@@ -243,6 +255,7 @@ export interface RootRouteChildren {
   EscalationsRoute: typeof EscalationsRoute
   KnowledgeBaseRoute: typeof KnowledgeBaseRoute
   LiveChatRoute: typeof LiveChatRoute
+  ManagerRoute: typeof ManagerRoute
   NotificationsRoute: typeof NotificationsRoute
   TasksRoute: typeof TasksRoute
   CustomersCustomerIdRoute: typeof CustomersCustomerIdRoute
@@ -330,6 +343,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LiveChatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/manager': {
+      id: '/manager'
+      path: '/manager'
+      fullPath: '/manager'
+      preLoaderRoute: typeof ManagerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/notifications': {
       id: '/notifications'
       path: '/notifications'
@@ -387,6 +407,7 @@ const rootRouteChildren: RootRouteChildren = {
   EscalationsRoute: EscalationsRoute,
   KnowledgeBaseRoute: KnowledgeBaseRoute,
   LiveChatRoute: LiveChatRoute,
+  ManagerRoute: ManagerRoute,
   NotificationsRoute: NotificationsRoute,
   TasksRoute: TasksRoute,
   CustomersCustomerIdRoute: CustomersCustomerIdRoute,
