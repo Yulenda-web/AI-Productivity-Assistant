@@ -168,7 +168,10 @@ function EmailPage() {
                   size="sm"
                   variant="outline"
                   onClick={() => {
-                    if (!reply.trim()) return toast.error("Nothing to send yet");
+                    if (!reply.trim()) {
+                      toast.error("Nothing to send yet");
+                      return;
+                    }
                     toast.success("Reply sent and logged on the customer record");
                     setReply("");
                   }}
