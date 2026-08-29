@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdministrationRouteImport } from './routes/administration'
+import { Route as AiAutomationRouteImport } from './routes/ai-automation'
 import { Route as AiWorkspaceRouteImport } from './routes/ai-workspace'
 import { Route as CalendarRouteImport } from './routes/calendar'
 import { Route as CallCentreRouteImport } from './routes/call-centre'
@@ -34,6 +35,11 @@ const IndexRoute = IndexRouteImport.update({
 const AdministrationRoute = AdministrationRouteImport.update({
   id: '/administration',
   path: '/administration',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiAutomationRoute = AiAutomationRouteImport.update({
+  id: '/ai-automation',
+  path: '/ai-automation',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AiWorkspaceRoute = AiWorkspaceRouteImport.update({
@@ -110,6 +116,7 @@ const TicketsTicketIdRoute = TicketsTicketIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/administration': typeof AdministrationRoute
+  '/ai-automation': typeof AiAutomationRoute
   '/ai-workspace': typeof AiWorkspaceRoute
   '/calendar': typeof CalendarRoute
   '/call-centre': typeof CallCentreRoute
@@ -128,6 +135,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/administration': typeof AdministrationRoute
+  '/ai-automation': typeof AiAutomationRoute
   '/ai-workspace': typeof AiWorkspaceRoute
   '/calendar': typeof CalendarRoute
   '/call-centre': typeof CallCentreRoute
@@ -147,6 +155,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/administration': typeof AdministrationRoute
+  '/ai-automation': typeof AiAutomationRoute
   '/ai-workspace': typeof AiWorkspaceRoute
   '/calendar': typeof CalendarRoute
   '/call-centre': typeof CallCentreRoute
@@ -167,6 +176,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/administration'
+    | '/ai-automation'
     | '/ai-workspace'
     | '/calendar'
     | '/call-centre'
@@ -185,6 +195,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/administration'
+    | '/ai-automation'
     | '/ai-workspace'
     | '/calendar'
     | '/call-centre'
@@ -203,6 +214,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/administration'
+    | '/ai-automation'
     | '/ai-workspace'
     | '/calendar'
     | '/call-centre'
@@ -222,6 +234,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdministrationRoute: typeof AdministrationRoute
+  AiAutomationRoute: typeof AiAutomationRoute
   AiWorkspaceRoute: typeof AiWorkspaceRoute
   CalendarRoute: typeof CalendarRoute
   CallCentreRoute: typeof CallCentreRoute
@@ -252,6 +265,13 @@ declare module '@tanstack/react-router' {
       path: '/administration'
       fullPath: '/administration'
       preLoaderRoute: typeof AdministrationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai-automation': {
+      id: '/ai-automation'
+      path: '/ai-automation'
+      fullPath: '/ai-automation'
+      preLoaderRoute: typeof AiAutomationRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ai-workspace': {
@@ -358,6 +378,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdministrationRoute: AdministrationRoute,
+  AiAutomationRoute: AiAutomationRoute,
   AiWorkspaceRoute: AiWorkspaceRoute,
   CalendarRoute: CalendarRoute,
   CallCentreRoute: CallCentreRoute,
