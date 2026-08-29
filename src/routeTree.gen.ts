@@ -22,7 +22,10 @@ import { Route as KnowledgeBaseRouteImport } from './routes/knowledge-base'
 import { Route as LiveChatRouteImport } from './routes/live-chat'
 import { Route as ManagerRouteImport } from './routes/manager'
 import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as ReportsRouteImport } from './routes/reports'
 import { Route as TasksRouteImport } from './routes/tasks'
+import { Route as TeamManagementRouteImport } from './routes/team-management'
+import { Route as WorkforceMonitorRouteImport } from './routes/workforce-monitor'
 import { Route as CustomersIndexRouteImport } from './routes/customers.index'
 import { Route as CustomersCustomerIdRouteImport } from './routes/customers.$customerId'
 import { Route as TicketsIndexRouteImport } from './routes/tickets.index'
@@ -93,9 +96,24 @@ const NotificationsRoute = NotificationsRouteImport.update({
   path: '/notifications',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReportsRoute = ReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TasksRoute = TasksRouteImport.update({
   id: '/tasks',
   path: '/tasks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeamManagementRoute = TeamManagementRouteImport.update({
+  id: '/team-management',
+  path: '/team-management',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WorkforceMonitorRoute = WorkforceMonitorRouteImport.update({
+  id: '/workforce-monitor',
+  path: '/workforce-monitor',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CustomersIndexRoute = CustomersIndexRouteImport.update({
@@ -133,7 +151,10 @@ export interface FileRoutesByFullPath {
   '/live-chat': typeof LiveChatRoute
   '/manager': typeof ManagerRoute
   '/notifications': typeof NotificationsRoute
+  '/reports': typeof ReportsRoute
   '/tasks': typeof TasksRoute
+  '/team-management': typeof TeamManagementRoute
+  '/workforce-monitor': typeof WorkforceMonitorRoute
   '/customers/$customerId': typeof CustomersCustomerIdRoute
   '/tickets/$ticketId': typeof TicketsTicketIdRoute
   '/customers/': typeof CustomersIndexRoute
@@ -153,7 +174,10 @@ export interface FileRoutesByTo {
   '/live-chat': typeof LiveChatRoute
   '/manager': typeof ManagerRoute
   '/notifications': typeof NotificationsRoute
+  '/reports': typeof ReportsRoute
   '/tasks': typeof TasksRoute
+  '/team-management': typeof TeamManagementRoute
+  '/workforce-monitor': typeof WorkforceMonitorRoute
   '/customers/$customerId': typeof CustomersCustomerIdRoute
   '/tickets/$ticketId': typeof TicketsTicketIdRoute
   '/customers': typeof CustomersIndexRoute
@@ -174,7 +198,10 @@ export interface FileRoutesById {
   '/live-chat': typeof LiveChatRoute
   '/manager': typeof ManagerRoute
   '/notifications': typeof NotificationsRoute
+  '/reports': typeof ReportsRoute
   '/tasks': typeof TasksRoute
+  '/team-management': typeof TeamManagementRoute
+  '/workforce-monitor': typeof WorkforceMonitorRoute
   '/customers/$customerId': typeof CustomersCustomerIdRoute
   '/tickets/$ticketId': typeof TicketsTicketIdRoute
   '/customers/': typeof CustomersIndexRoute
@@ -196,7 +223,10 @@ export interface FileRouteTypes {
     | '/live-chat'
     | '/manager'
     | '/notifications'
+    | '/reports'
     | '/tasks'
+    | '/team-management'
+    | '/workforce-monitor'
     | '/customers/$customerId'
     | '/tickets/$ticketId'
     | '/customers/'
@@ -216,7 +246,10 @@ export interface FileRouteTypes {
     | '/live-chat'
     | '/manager'
     | '/notifications'
+    | '/reports'
     | '/tasks'
+    | '/team-management'
+    | '/workforce-monitor'
     | '/customers/$customerId'
     | '/tickets/$ticketId'
     | '/customers'
@@ -236,7 +269,10 @@ export interface FileRouteTypes {
     | '/live-chat'
     | '/manager'
     | '/notifications'
+    | '/reports'
     | '/tasks'
+    | '/team-management'
+    | '/workforce-monitor'
     | '/customers/$customerId'
     | '/tickets/$ticketId'
     | '/customers/'
@@ -257,7 +293,10 @@ export interface RootRouteChildren {
   LiveChatRoute: typeof LiveChatRoute
   ManagerRoute: typeof ManagerRoute
   NotificationsRoute: typeof NotificationsRoute
+  ReportsRoute: typeof ReportsRoute
   TasksRoute: typeof TasksRoute
+  TeamManagementRoute: typeof TeamManagementRoute
+  WorkforceMonitorRoute: typeof WorkforceMonitorRoute
   CustomersCustomerIdRoute: typeof CustomersCustomerIdRoute
   TicketsTicketIdRoute: typeof TicketsTicketIdRoute
   CustomersIndexRoute: typeof CustomersIndexRoute
@@ -357,11 +396,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NotificationsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reports': {
+      id: '/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tasks': {
       id: '/tasks'
       path: '/tasks'
       fullPath: '/tasks'
       preLoaderRoute: typeof TasksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team-management': {
+      id: '/team-management'
+      path: '/team-management'
+      fullPath: '/team-management'
+      preLoaderRoute: typeof TeamManagementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/workforce-monitor': {
+      id: '/workforce-monitor'
+      path: '/workforce-monitor'
+      fullPath: '/workforce-monitor'
+      preLoaderRoute: typeof WorkforceMonitorRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/customers/': {
@@ -409,7 +469,10 @@ const rootRouteChildren: RootRouteChildren = {
   LiveChatRoute: LiveChatRoute,
   ManagerRoute: ManagerRoute,
   NotificationsRoute: NotificationsRoute,
+  ReportsRoute: ReportsRoute,
   TasksRoute: TasksRoute,
+  TeamManagementRoute: TeamManagementRoute,
+  WorkforceMonitorRoute: WorkforceMonitorRoute,
   CustomersCustomerIdRoute: CustomersCustomerIdRoute,
   TicketsTicketIdRoute: TicketsTicketIdRoute,
   CustomersIndexRoute: CustomersIndexRoute,
